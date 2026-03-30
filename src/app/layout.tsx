@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Lora } from 'next/font/google'
 import { themeScript } from '@/lib/theme'
+import { Nav } from '@/components/nav/Nav'
 import './globals.css'
 
 const inter = Inter({
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className={`${inter.variable} ${lora.variable}`}>
+        <Nav />
         {children}
       </body>
     </html>
