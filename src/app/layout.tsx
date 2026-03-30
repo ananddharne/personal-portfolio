@@ -1,8 +1,15 @@
 import type { Metadata } from 'next'
 import { Inter, Lora } from 'next/font/google'
+import dynamic from 'next/dynamic'
 import { themeScript } from '@/lib/theme'
 import { Nav } from '@/components/nav/Nav'
+import { LenisProvider } from '@/components/providers/LenisProvider'
 import './globals.css'
+
+const ChatWidget = dynamic(
+  () => import('@/components/chat/ChatWidget').then(m => ({ default: m.ChatWidget })),
+  { ssr: false }
+)
 
 const inter = Inter({
   subsets: ['latin'],
@@ -39,8 +46,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className={`${inter.variable} ${lora.variable}`}>
-        <Nav />
-        {children}
+        <LenisProvider>
+          <Nav />
+          {children}
+          <ChatWidget />
+        </LenisProvider>
       </body>
     </html>
   )
