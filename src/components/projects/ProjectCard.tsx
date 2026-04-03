@@ -1,69 +1,199 @@
-import { ExternalLink } from 'lucide-react'
+import Image from 'next/image'
 import type { Project } from '@/lib/types'
 
-export function ProjectCard({ project }: { project: Project }) {
-  const isFeatured = project.featured
+const PREVIEW_IMAGES = [
+  'https://picsum.photos/seed/proj1/800/450',
+  'https://picsum.photos/seed/proj2/800/450',
+  'https://picsum.photos/seed/proj3/800/450',
+  'https://picsum.photos/seed/proj4/800/450',
+]
 
-  return (
-    <div
-      className={`group relative border p-5 transition-all duration-200 cursor-default
-        hover:border-[var(--accent)] hover:-translate-y-0.5
-        ${isFeatured ? 'col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 items-center' : ''}`}
-      style={{ borderColor: 'var(--border)', background: 'var(--bg-secondary)' }}
-    >
-      {/* Content */}
-      <div>
-        <p className="text-[9px] tracking-[0.1em] mb-2" style={{ color: 'var(--text-subtle)' }}>
-          {project.num}
-        </p>
-        <h3
-          className="font-serif font-bold tracking-[-0.01em] leading-tight mb-2"
-          style={{ fontSize: isFeatured ? 'clamp(20px, 2.5vw, 26px)' : '18px', color: 'var(--text)' }}
-        >
-          {project.title}
-        </h3>
-        <p className="text-[11px] leading-relaxed mb-3" style={{ color: 'var(--text-muted)' }}>
-          {project.description}
-        </p>
-        <div className="flex flex-wrap gap-1.5">
-          {project.tags.map(tag => (
-            <span
-              key={tag}
-              className="text-[9px] px-1.5 py-0.5 tracking-wide"
-              style={{ background: 'var(--accent-light)', color: 'var(--accent-text)' }}
-            >
-              {tag}
-            </span>
-          ))}
+export function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
+  const href = project.liveUrl ?? project.githubUrl
+
+  if (project.featured) {
+    return (
+      <div
+        className="group"
+        style={{ border: '1px solid var(--border)', background: 'var(--surface)' }}
+      >
+        {/* Image */}
+        <div className="relative overflow-hidden w-full" style={{ aspectRatio: '16/9' }}>
+          <Image
+            src={PREVIEW_IMAGES[index] ?? PREVIEW_IMAGES[0]}
+            alt={`${project.title} preview`}
+            fill
+            className="object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-[1.02]"
+            sizes="(max-width: 768px) 100vw, 80vw"
+          />
+        </div>
+
+        {/* Content */}
+        <div style={{ padding: '28px 32px' }}>
+          <div className="flex items-start justify-between gap-4 mb-4">
+            <div>
+              <p
+                style={{
+                  fontFamily:    'var(--font-mono)',
+                  fontSize:      '10px',
+                  color:         'var(--text-subtle)',
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  marginBottom:  '8px',
+                }}
+              >
+                Featured · {project.num}
+              </p>
+              <h3
+                style={{
+                  fontFamily:   'var(--font-sans)',
+                  fontSize:     '20px',
+                  fontWeight:   600,
+                  letterSpacing:'-0.01em',
+                  color:        'var(--text)',
+                  lineHeight:   1.25,
+                }}
+              >
+                {project.title}
+              </h3>
+            </div>
+            {href && (
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-opacity hover:opacity-60"
+                style={{
+                  fontFamily:    'var(--font-mono)',
+                  fontSize:      '11px',
+                  color:         'var(--accent)',
+                  textDecoration:'none',
+                  letterSpacing: '0.04em',
+                  flexShrink:    0,
+                  marginTop:     '2px',
+                }}
+              >
+                View ↗
+              </a>
+            )}
+          </div>
+
+          <p
+            style={{
+              fontFamily:   'var(--font-sans)',
+              fontSize:     '14px',
+              lineHeight:   1.75,
+              color:        'var(--text-muted)',
+              marginBottom: '20px',
+              maxWidth:     '72ch',
+            }}
+          >
+            {project.description}
+          </p>
+
+          <div className="flex flex-wrap gap-2">
+            {project.tags.map(tag => (
+              <span
+                key={tag}
+                style={{
+                  fontFamily:    'var(--font-mono)',
+                  fontSize:      '10px',
+                  color:         'var(--text-subtle)',
+                  letterSpacing: '0.05em',
+                  border:        '1px solid var(--border)',
+                  padding:       '3px 9px',
+                }}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
+    )
+  }
 
-      {/* Featured visual OR external link icon */}
-      {isFeatured ? (
-        <div
-          className="aspect-video flex items-center justify-center text-[10px] tracking-widest uppercase"
+  // Regular card
+  return (
+    <div
+      className="group h-full transition-colors duration-200 hover:border-[var(--accent)]"
+      style={{
+        border:     '1px solid var(--border)',
+        background: 'var(--surface)',
+        padding:    '24px',
+      }}
+    >
+      <div className="flex items-start justify-between mb-5">
+        <span
           style={{
-            background: 'linear-gradient(135deg, var(--accent-light), var(--bg))',
-            color: 'var(--text-subtle)',
-            border: '1px solid var(--border)',
+            fontFamily:    'var(--font-mono)',
+            fontSize:      '11px',
+            color:         'var(--text-subtle)',
+            letterSpacing: '0.06em',
           }}
         >
-          Preview
-        </div>
-      ) : (
-        (project.liveUrl || project.githubUrl) && (
+          {project.num}
+        </span>
+        {href && (
           <a
-            href={project.liveUrl ?? project.githubUrl}
+            href={href}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Open ${project.title}`}
-            className="absolute top-4 right-4 transition-colors hover:text-[var(--accent)]"
-            style={{ color: 'var(--text-subtle)' }}
+            className="transition-colors hover:text-[var(--accent)]"
+            style={{
+              color:          'var(--text-subtle)',
+              fontSize:       '14px',
+              textDecoration: 'none',
+            }}
           >
-            <ExternalLink size={14} />
+            ↗
           </a>
-        )
-      )}
+        )}
+      </div>
+
+      <h3
+        style={{
+          fontFamily:   'var(--font-sans)',
+          fontSize:     '17px',
+          fontWeight:   600,
+          letterSpacing:'-0.01em',
+          lineHeight:   1.3,
+          color:        'var(--text)',
+          marginBottom: '10px',
+        }}
+      >
+        {project.title}
+      </h3>
+      <p
+        style={{
+          fontFamily:   'var(--font-sans)',
+          fontSize:     '13px',
+          lineHeight:   1.75,
+          color:        'var(--text-muted)',
+          marginBottom: '20px',
+        }}
+      >
+        {project.description}
+      </p>
+
+      <div className="flex flex-wrap gap-2">
+        {project.tags.map(tag => (
+          <span
+            key={tag}
+            style={{
+              fontFamily:    'var(--font-mono)',
+              fontSize:      '10px',
+              color:         'var(--text-subtle)',
+              letterSpacing: '0.04em',
+              border:        '1px solid var(--border)',
+              padding:       '2px 7px',
+            }}
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
     </div>
   )
 }

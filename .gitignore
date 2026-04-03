@@ -43,3 +43,8 @@ next-env.d.ts
 # worktrees
 .worktrees/
 .superpowers/
+
+# local docs / AI tooling
+docs/
+CLAUDE.md
+AGENTS.md

@@ -1,52 +1,66 @@
 @import 'tailwindcss';
 
+/* ─── Design System ─────────────────────────────────────────── */
 :root {
-  --bg: #faf9f6;
-  --bg-secondary: #f3f0eb;
-  --text: #111111;
-  --text-muted: #6b7280;
-  --text-subtle: #9ca3af;
-  --accent: #d97706;
-  --accent-light: #fef3c7;
-  --accent-text: #92400e;
-  --border: #e5e0d8;
-  --font-serif: var(--font-lora), Georgia, serif;
-  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --bg:          #0d0c0b;
+  --surface:     #161512;
+  --surface-2:   #1f1e1a;
+  --text:        #f0ece3;
+  --text-muted:  #8a877f;
+  --text-subtle: #3c3b37;
+  --accent:      #c09040;
+  --border:      #252320;
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans:   var(--font-dm-sans), system-ui, sans-serif;
+  --font-mono:   var(--font-jetbrains), monospace;
 }
 
 [data-theme="dark"] {
-  --bg: #0a0a0f;
-  --bg-secondary: #111118;
-  --text: #f9fafb;
-  --text-muted: #9ca3af;
-  --text-subtle: #4b5563;
-  --accent: #fbbf24;
-  --accent-light: rgba(120, 53, 15, 0.25);
-  --accent-text: #fbbf24;
-  --border: #1e1e2e;
+  --bg:          #0d0c0b;
+  --surface:     #161512;
+  --surface-2:   #1f1e1a;
+  --text:        #f0ece3;
+  --text-muted:  #8a877f;
+  --text-subtle: #3c3b37;
+  --accent:      #c09040;
+  --border:      #252320;
 }
 
-* {
+[data-theme="light"] {
+  --bg:          #f8f5ef;
+  --surface:     #edeae3;
+  --surface-2:   #e0dcd3;
+  --text:        #1a1917;
+  --text-muted:  #5c5a53;
+  --text-subtle: #a8a59d;
+  --accent:      #8b6020;
+  --border:      #dbd8cf;
+}
+
+/* ─── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 html {
-  background-color: var(--bg);
+  background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background-color: var(--bg);
-  transition: background-color 0.2s ease, color 0.2s ease;
+  background: var(--bg);
+  transition: background-color 0.25s, color 0.25s;
 }
 
+/* ─── Chat pulse ─────────────────────────────────────────────── */
 @keyframes pulse {
   0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
-  40% { opacity: 1; transform: scale(1); }
+  40%            { opacity: 1;   transform: scale(1);   }
 }
 
 @media (prefers-reduced-motion: reduce) {

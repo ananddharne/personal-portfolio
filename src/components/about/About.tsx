@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import { bio } from '@/lib/content'
@@ -6,54 +7,69 @@ export function About() {
   return (
     <section
       id="about"
-      className="py-16 md:py-20 border-b"
-      style={{ borderColor: 'var(--border)' }}
+      style={{
+        borderTop:    '1px solid var(--border)',
+        paddingTop:   '80px',
+        paddingBottom:'100px',
+      }}
     >
-      <div className="max-w-[1100px] mx-auto px-[clamp(20px,5vw,80px)]">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
+      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 32px' }}>
 
-          {/* Text column */}
-          <ScrollReveal>
-            <SectionLabel>About</SectionLabel>
+        <ScrollReveal>
+          <SectionLabel num="01">About</SectionLabel>
+        </ScrollReveal>
+
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_320px] gap-12 md:gap-20 items-start">
+
+          {/* Text */}
+          <ScrollReveal delay={0.05}>
             <h2
-              className="font-serif font-bold leading-tight tracking-[-0.02em] mt-2 mb-4"
-              style={{ fontSize: 'clamp(28px, 4vw, 40px)', color: 'var(--text)' }}
+              style={{
+                fontFamily:    'var(--font-display)',
+                fontWeight:    400,
+                fontStyle:     'italic',
+                fontSize:      'clamp(30px, 4vw, 44px)',
+                letterSpacing: '-0.025em',
+                lineHeight:    1.15,
+                color:         'var(--text)',
+                marginBottom:  '2rem',
+              }}
             >
               Engineer by training,<br />builder by instinct.
             </h2>
-            <div className="my-4 h-px w-8" style={{ background: 'var(--border)' }} />
+
             {bio.about.map((para, i) => (
               <p
                 key={i}
-                className="text-sm leading-[1.8] mb-3"
-                style={{ color: 'var(--text-muted)' }}
+                style={{
+                  fontFamily:   'var(--font-sans)',
+                  fontSize:     '15px',
+                  lineHeight:   1.8,
+                  color:        'var(--text-muted)',
+                  marginBottom: i < bio.about.length - 1 ? '1.25rem' : 0,
+                }}
               >
                 {para}
               </p>
             ))}
           </ScrollReveal>
 
-          {/* Photo column */}
+          {/* Photo */}
           <ScrollReveal delay={0.15}>
             <div
-              className="relative w-full border"
-              style={{ aspectRatio: '4/5', borderColor: 'var(--border)' }}
+              className="relative w-full overflow-hidden"
+              style={{
+                aspectRatio: '3/4',
+                border:      '1px solid var(--border)',
+              }}
             >
-              <div
-                className="absolute inset-0 flex items-center justify-center text-[10px] uppercase tracking-widest"
-                style={{ color: 'var(--text-subtle)', background: 'var(--bg-secondary)' }}
-              >
-                Photo
-              </div>
-              {/* Uncomment when photo is available:
               <Image
-                src="/photo.jpg"
+                src="https://picsum.photos/seed/portrait42/600/800"
                 alt="Anand Dharne"
                 fill
-                className="object-cover"
-                priority={false}
+                className="object-cover grayscale"
+                sizes="(max-width: 768px) 100vw, 320px"
               />
-              */}
             </div>
           </ScrollReveal>
 

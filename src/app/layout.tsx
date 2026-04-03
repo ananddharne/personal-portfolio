@@ -1,26 +1,29 @@
 import type { Metadata } from 'next'
-import { Inter, Lora } from 'next/font/google'
-import dynamic from 'next/dynamic'
+import { Fraunces, DM_Sans, JetBrains_Mono } from 'next/font/google'
 import { themeScript } from '@/lib/theme'
 import { Nav } from '@/components/nav/Nav'
 import { LenisProvider } from '@/components/providers/LenisProvider'
 import './globals.css'
 
-const ChatWidget = dynamic(
-  () => import('@/components/chat/ChatWidget').then(m => ({ default: m.ChatWidget })),
-  { ssr: false }
-)
-
-const inter = Inter({
+const fraunces = Fraunces({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-fraunces',
+  weight: ['300', '400', '500'],
+  style: ['normal', 'italic'],
   display: 'swap',
 })
 
-const lora = Lora({
+const dmSans = DM_Sans({
   subsets: ['latin'],
-  variable: '--font-lora',
-  weight: ['400', '700'],
+  variable: '--font-dm-sans',
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+})
+
+const jetbrains = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains',
+  weight: ['400', '500'],
   display: 'swap',
 })
 
@@ -45,11 +48,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className={`${inter.variable} ${lora.variable}`}>
+      <body className={`${fraunces.variable} ${dmSans.variable} ${jetbrains.variable}`}>
         <LenisProvider>
           <Nav />
           {children}
-          <ChatWidget />
         </LenisProvider>
       </body>
     </html>

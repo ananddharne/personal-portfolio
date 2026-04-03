@@ -4,30 +4,64 @@ import { ProjectCard } from './ProjectCard'
 import { projects } from '@/lib/content'
 
 export function Projects() {
+  const featured    = projects.filter(p => p.featured)
+  const notFeatured = projects.filter(p => !p.featured)
+
   return (
     <section
       id="projects"
-      className="py-16 md:py-20 border-b"
-      style={{ borderColor: 'var(--border)' }}
+      style={{
+        borderTop:    '1px solid var(--border)',
+        paddingTop:   '80px',
+        paddingBottom:'100px',
+      }}
     >
-      <div className="max-w-[1100px] mx-auto px-[clamp(20px,5vw,80px)]">
+      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 32px' }}>
+
         <ScrollReveal>
-          <SectionLabel>Projects</SectionLabel>
+          <SectionLabel num="03">Projects</SectionLabel>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.05}>
           <h2
-            className="font-serif font-bold tracking-[-0.02em] mt-2 mb-8"
-            style={{ fontSize: 'clamp(28px, 4vw, 40px)', color: 'var(--text)' }}
+            style={{
+              fontFamily:    'var(--font-display)',
+              fontWeight:    400,
+              fontStyle:     'italic',
+              fontSize:      'clamp(30px, 4vw, 44px)',
+              letterSpacing: '-0.025em',
+              lineHeight:    1.15,
+              color:         'var(--text)',
+              marginBottom:  '3rem',
+            }}
           >
             Selected work.
           </h2>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {projects.map((project, i) => (
-            <ScrollReveal key={project.id} delay={i * 0.06}>
-              <ProjectCard project={project} />
-            </ScrollReveal>
-          ))}
-        </div>
+        {/* Featured */}
+        {featured.map((project, i) => (
+          <ScrollReveal key={project.id} delay={i * 0.05}>
+            <div style={{ marginBottom: '16px' }}>
+              <ProjectCard project={project} index={i} />
+            </div>
+          </ScrollReveal>
+        ))}
+
+        {/* Grid */}
+        {notFeatured.length > 0 && (
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+            style={{ gap: '12px', marginTop: '12px' }}
+          >
+            {notFeatured.map((project, i) => (
+              <ScrollReveal key={project.id} delay={i * 0.05}>
+                <ProjectCard project={project} index={featured.length + i} />
+              </ScrollReveal>
+            ))}
+          </div>
+        )}
+
       </div>
     </section>
   )

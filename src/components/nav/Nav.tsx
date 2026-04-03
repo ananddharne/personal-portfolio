@@ -5,20 +5,22 @@ import { Logo } from '@/components/ui/Logo'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
 
 const NAV_LINKS = [
-  { label: 'Work', href: '#projects' },
-  { label: 'About', href: '#about' },
+  { label: 'Work',       href: '#projects'   },
+  { label: 'About',      href: '#about'      },
   { label: 'Experience', href: '#experience' },
 ]
 
 export function Nav() {
-  const [hidden, setHidden] = useState(false)
+  const [hidden, setHidden]     = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const lastY = useRef(0)
   const { scrollY } = useScroll()
 
   useEffect(() => {
     return scrollY.on('change', (y) => {
-      setHidden(y > lastY.current && y > 80)
+      setHidden(y > lastY.current && y > 100)
+      setScrolled(y > 20)
       lastY.current = y
     })
   }, [scrollY])
@@ -28,48 +30,65 @@ export function Nav() {
       <motion.header
         animate={{ y: hidden ? '-100%' : '0%' }}
         transition={{ duration: 0.25, ease: 'easeInOut' }}
-        className="fixed top-0 left-0 right-0 z-50"
-        style={{ borderBottom: '1px solid var(--border)', background: 'var(--bg)' }}
+        className="fixed top-0 inset-x-0 z-50"
+        style={{
+          height:       '56px',
+          background:   scrolled ? 'var(--bg)' : 'transparent',
+          borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
+          transition:   'background 0.3s, border-color 0.3s',
+        }}
       >
-        <div className="max-w-[1100px] mx-auto px-[clamp(20px,5vw,80px)] h-14 flex items-center justify-between">
-          <a href="#" aria-label="Home">
+        <div
+          className="h-full flex items-center justify-between"
+          style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 32px' }}
+        >
+          <a href="#" aria-label="Home" style={{ textDecoration: 'none' }}>
             <Logo />
           </a>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-5">
+          <nav className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map(link => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-[11px] transition-colors hover:text-[var(--accent)]"
-                style={{ color: 'var(--text-muted)' }}
+                className="transition-colors hover:text-[var(--text)]"
+                style={{
+                  fontFamily:    'var(--font-sans)',
+                  fontSize:      '13px',
+                  fontWeight:    400,
+                  color:         'var(--text-muted)',
+                  textDecoration:'none',
+                  letterSpacing: '0.01em',
+                }}
               >
                 {link.label}
               </a>
             ))}
+          </nav>
+
+          <div className="flex items-center gap-3">
             <ThemeToggle />
             <a
               href="#contact"
-              className="text-[10px] px-3 py-1.5 tracking-wide transition-colors"
+              className="hidden md:inline-block transition-colors hover:bg-[var(--accent)] hover:text-[var(--bg)] hover:border-[var(--accent)]"
               style={{
-                background: 'var(--text)',
-                color: 'var(--bg)',
-                letterSpacing: '0.04em',
+                fontFamily:    'var(--font-mono)',
+                fontSize:      '11px',
+                color:         'var(--accent)',
+                letterSpacing: '0.06em',
+                textDecoration:'none',
+                padding:       '7px 14px',
+                border:        '1px solid var(--accent)',
               }}
             >
               Hire me
             </a>
-          </nav>
-
-          {/* Mobile hamburger */}
-          <div className="flex md:hidden items-center gap-3">
-            <ThemeToggle />
             <button
               onClick={() => setMenuOpen(o => !o)}
+              className="md:hidden p-1.5"
               aria-label="Toggle menu"
-              className="p-1.5"
-              style={{ color: 'var(--text-muted)' }}
+              style={{ color: 'var(--text-muted)', fontSize: '18px', background: 'none', border: 'none', cursor: 'pointer' }}
             >
               {menuOpen ? '✕' : '☰'}
             </button>
@@ -77,10 +96,10 @@ export function Nav() {
         </div>
       </motion.header>
 
-      {/* Mobile overlay */}
+      {/* Mobile menu */}
       {menuOpen && (
         <div
-          className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 md:hidden"
+          className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-12 md:hidden"
           style={{ background: 'var(--bg)' }}
         >
           {NAV_LINKS.map(link => (
@@ -88,8 +107,15 @@ export function Nav() {
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="font-serif text-2xl font-bold"
-              style={{ color: 'var(--text)' }}
+              style={{
+                fontFamily:    'var(--font-display)',
+                fontStyle:     'italic',
+                fontWeight:    400,
+                fontSize:      '36px',
+                color:         'var(--text)',
+                textDecoration:'none',
+                letterSpacing: '-0.02em',
+              }}
             >
               {link.label}
             </a>
@@ -97,8 +123,13 @@ export function Nav() {
           <a
             href="#contact"
             onClick={() => setMenuOpen(false)}
-            className="font-serif text-2xl font-bold"
-            style={{ color: 'var(--accent)' }}
+            style={{
+              fontFamily:    'var(--font-mono)',
+              fontSize:      '13px',
+              color:         'var(--accent)',
+              textDecoration:'none',
+              letterSpacing: '0.06em',
+            }}
           >
             Hire me
           </a>

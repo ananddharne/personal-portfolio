@@ -1,10 +1,38 @@
-export function SectionLabel({ children }: { children: React.ReactNode }) {
+interface SectionLabelProps {
+  num: string
+  children: React.ReactNode
+}
+
+export function SectionLabel({ num, children }: SectionLabelProps) {
   return (
-    <p
-      className="text-[9px] uppercase tracking-[0.16em] mb-1.5"
-      style={{ color: 'var(--text-subtle)', fontFamily: 'var(--font-sans)' }}
+    <div
+      className="flex items-center gap-4"
+      style={{ marginBottom: '4rem' }}
     >
-      {children}
-    </p>
+      <span
+        style={{
+          fontFamily:    'var(--font-mono)',
+          fontSize:      '11px',
+          color:         'var(--accent)',
+          letterSpacing: '0.06em',
+          flexShrink:    0,
+        }}
+      >
+        {num}
+      </span>
+      <div style={{ flex: 1, height: '1px', background: 'var(--border)' }} />
+      <span
+        style={{
+          fontFamily:    'var(--font-mono)',
+          fontSize:      '10px',
+          color:         'var(--text-subtle)',
+          letterSpacing: '0.18em',
+          textTransform: 'uppercase',
+          flexShrink:    0,
+        }}
+      >
+        {children}
+      </span>
+    </div>
   )
 }

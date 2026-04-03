@@ -3,19 +3,42 @@
 export function Footer() {
   return (
     <footer
-      className="py-5 border-t"
-      style={{ borderColor: 'var(--border)' }}
+      style={{
+        borderTop: '1px solid var(--border)',
+        padding:   '24px 0',
+      }}
     >
-      <div className="max-w-[1100px] mx-auto px-[clamp(20px,5vw,80px)] flex justify-between items-center">
-        <p className="text-[10px]" style={{ color: 'var(--text-subtle)' }}>
-          © 2026 Anand Dharne. Designed & built with care.
+      <div
+        className="flex justify-between items-center"
+        style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 32px' }}
+      >
+        <p
+          style={{
+            fontFamily:    'var(--font-mono)',
+            fontSize:      '10px',
+            color:         'var(--text-subtle)',
+            letterSpacing: '0.05em',
+          }}
+        >
+          © 2026 Anand Dharne
         </p>
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="text-[10px] underline underline-offset-2 transition-colors hover:text-[var(--accent)]"
-          style={{ color: 'var(--text-muted)' }}
+          style={{
+            fontFamily:    'var(--font-mono)',
+            fontSize:      '10px',
+            color:         'var(--text-subtle)',
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase',
+            background:    'none',
+            border:        'none',
+            cursor:        'pointer',
+            transition:    'color 0.15s',
+          }}
+          onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
+          onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-subtle)')}
         >
-          Back to top ↑
+          Top ↑
         </button>
       </div>
     </footer>

@@ -1,4 +1,3 @@
-import { SectionLabel } from '@/components/ui/SectionLabel'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import { bio } from '@/lib/content'
 
@@ -6,56 +5,101 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="py-16 md:py-24"
-      style={{ borderColor: 'var(--border)' }}
+      style={{
+        borderTop:    '1px solid var(--border)',
+        paddingTop:   '100px',
+        paddingBottom:'120px',
+      }}
     >
-      <div className="max-w-[1100px] mx-auto px-[clamp(20px,5vw,80px)]">
+      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 32px' }}>
         <ScrollReveal>
-          <SectionLabel>Contact</SectionLabel>
-          <h2
-            className="font-serif font-bold tracking-[-0.02em] mt-2 mb-3"
-            style={{ fontSize: 'clamp(28px, 4vw, 40px)', color: 'var(--text)' }}
-          >
-            Let&apos;s work together.
-          </h2>
-          <p className="text-sm leading-relaxed mb-6 max-w-sm" style={{ color: 'var(--text-muted)' }}>
-            I&apos;m actively looking for my next role. If you&apos;re building something interesting, I&apos;d love to hear about it.
-          </p>
-          <div className="flex flex-wrap gap-4 items-center">
-            <a
-              href={`mailto:${bio.email}`}
-              className="text-[11px] px-4 py-2 tracking-wide transition-colors"
-              style={{ background: 'var(--text)', color: 'var(--bg)', letterSpacing: '0.04em' }}
+          <div style={{ maxWidth: '640px' }}>
+
+            <p
+              style={{
+                fontFamily:    'var(--font-mono)',
+                fontSize:      '11px',
+                color:         'var(--accent)',
+                letterSpacing: '0.1em',
+                marginBottom:  '1.5rem',
+              }}
             >
-              Send an email
-            </a>
-            <a
-              href={bio.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[11px] underline underline-offset-3 transition-colors hover:text-[var(--accent)]"
-              style={{ color: 'var(--text-muted)' }}
+              05 / Contact
+            </p>
+
+            <h2
+              style={{
+                fontFamily:    'var(--font-display)',
+                fontWeight:    400,
+                fontStyle:     'italic',
+                fontSize:      'clamp(36px, 6vw, 72px)',
+                letterSpacing: '-0.03em',
+                lineHeight:    0.95,
+                color:         'var(--text)',
+                marginBottom:  '2rem',
+              }}
             >
-              LinkedIn ↗
-            </a>
-            <a
-              href={bio.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[11px] underline underline-offset-3 transition-colors hover:text-[var(--accent)]"
-              style={{ color: 'var(--text-muted)' }}
+              Let&apos;s work<br />together.
+            </h2>
+
+            <p
+              style={{
+                fontFamily:   'var(--font-sans)',
+                fontSize:     '15px',
+                lineHeight:   1.75,
+                color:        'var(--text-muted)',
+                marginBottom: '3rem',
+                maxWidth:     '46ch',
+              }}
             >
-              GitHub ↗
-            </a>
-            <a
-              href={bio.resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[11px] underline underline-offset-3 transition-colors hover:text-[var(--accent)]"
-              style={{ color: 'var(--text-muted)' }}
-            >
-              Resume ↓
-            </a>
+              I&apos;m actively looking for my next role. If you&apos;re building something
+              interesting, I&apos;d love to hear about it.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+              <a
+                href={`mailto:${bio.email}`}
+                className="transition-opacity hover:opacity-75"
+                style={{
+                  fontFamily:    'var(--font-mono)',
+                  fontSize:      '13px',
+                  color:         'var(--bg)',
+                  letterSpacing: '0.05em',
+                  padding:       '14px 28px',
+                  background:    'var(--text)',
+                  textDecoration:'none',
+                  display:       'inline-block',
+                }}
+              >
+                Send an email →
+              </a>
+
+              <div className="flex items-center gap-6">
+                {[
+                  { label: 'LinkedIn', href: bio.linkedin  },
+                  { label: 'GitHub',   href: bio.github    },
+                  { label: 'Resume',   href: bio.resumeUrl },
+                ].map(({ label, href }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-[var(--text)]"
+                    style={{
+                      fontFamily:    'var(--font-mono)',
+                      fontSize:      '11px',
+                      color:         'var(--text-subtle)',
+                      textDecoration:'none',
+                      letterSpacing: '0.05em',
+                    }}
+                  >
+                    {label} ↗
+                  </a>
+                ))}
+              </div>
+            </div>
+
           </div>
         </ScrollReveal>
       </div>
