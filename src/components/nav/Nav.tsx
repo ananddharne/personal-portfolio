@@ -140,7 +140,7 @@ export function Nav() {
               letterSpacing: '0.06em',
             }}
           >
-            Hire me
+            Contact me
           </a>
         </div>
       )}
