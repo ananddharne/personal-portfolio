@@ -61,7 +61,7 @@ export function About() {
                 src="/about.jpeg"
                 alt="Anand Dharne"
                 fill
-                className="object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-[1.02]"
+                className="object-cover transition-all duration-700 [@media(hover:hover)]:grayscale [@media(hover:hover)]:group-hover:grayscale-0 [@media(hover:hover)]:group-hover:scale-[1.02]"
                 sizes="(max-width: 768px) 100vw, 320px"
               />
             </div>
