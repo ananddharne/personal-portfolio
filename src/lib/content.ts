@@ -19,7 +19,7 @@ export const experience: ExperienceItem[] = [
     company: 'Mastercard',
     period: 'Feb 2023 – Present',
     type: 'Full-time',
-    description: 'Built and maintained loyalty and engagement platform features serving enterprise retail clients like Mcdonalds, Starbucks and American Airlines. Led performance optimization initiatives and contributed across the full stack.',
+    description: 'Built and augmented observability platform infrastructure and internal tooling, led a team of SREs across 3 global regions, and served as the final escalation point for complex technical issues across 40+ enterprise accounts including McDonalds, Starbucks, and American Airlines.',
     accomplishments: [
       'Own the observability platform (Splunk Observability Cloud, OpenTelemetry) across a loyalty and engagement system serving 40+ enterprise clients and millions of users',
       'Lead a distributed SRE team across 3 global regions — reducing MTTR by 45% through standardized on-call processes and post-incident reviews.',
@@ -46,7 +46,7 @@ export const experience: ExperienceItem[] = [
     company: 'SessionM',
     period: 'Oct 2019 – Oct 2021',
     type: 'Full-time',
-    description: 'Led QA automation across a complex, AWS-native loyalty platform — building end-to-end test suites with Cypress, performance tests with k6, and API automation with Postman/Newman.',
+    description: 'Led QA automation across a complex, AWS native loyalty platform - building end-to-end test suites with Cypress, performance tests with k6, and API automation with Postman/Newman.',
     accomplishments: [
       'Fostered a culture of TDD across the engineering team, leading to a reduction in production bugs',
       'Designed and implemented a comprehensive end-to-end testing framework using Cypress, achieving 90% test coverage across critical user flows and reducing manual testing efforts.',
