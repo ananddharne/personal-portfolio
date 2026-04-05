@@ -146,7 +146,7 @@ export function ProjectCard({ project }: { project: Project; index?: number }) {
       <p
         style={{
           fontFamily:   'var(--font-sans)',
-          fontSize:     '13px',
+          fontSize:     '18px',
           lineHeight:   1.75,
           color:        'var(--text-muted)',
           marginBottom: '20px',
