@@ -10,11 +10,7 @@ export function Projects() {
   return (
     <section
       id="projects"
-      style={{
-        borderTop:    '1px solid var(--border)',
-        paddingTop:   '80px',
-        paddingBottom:'100px',
-      }}
+      style={{ borderTop: '1px solid var(--border)', paddingTop: '80px', paddingBottom: '100px' }}
     >
       <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 32px' }}>
 
@@ -35,7 +31,7 @@ export function Projects() {
               marginBottom:  '3rem',
             }}
           >
-            Selected work.
+            Projects
           </h2>
         </ScrollReveal>
 
@@ -43,7 +39,7 @@ export function Projects() {
         {featured.map((project, i) => (
           <ScrollReveal key={project.id} delay={i * 0.05}>
             <div style={{ marginBottom: '16px' }}>
-              <ProjectCard project={project} index={i} />
+              <ProjectCard project={project} />
             </div>
           </ScrollReveal>
         ))}
@@ -56,7 +52,7 @@ export function Projects() {
           >
             {notFeatured.map((project, i) => (
               <ScrollReveal key={project.id} delay={i * 0.05}>
-                <ProjectCard project={project} index={featured.length + i} />
+                <ProjectCard project={project} />
               </ScrollReveal>
             ))}
           </div>

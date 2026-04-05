@@ -1,36 +1,79 @@
 'use client'
 import { motion } from 'framer-motion'
 
-export function HeroName({ name }: { name: string }) {
-  const container = {
-    hidden: {},
-    visible: {
-      transition: { staggerChildren: 0.04, delayChildren: 0.1 },
-    },
-  }
-  const char = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] } },
-  }
+interface HeroNameProps {
+  firstName: string
+  lastName:  string
+}
 
+const charVariants = {
+  hidden:  { opacity: 0, y: 48 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
+  },
+}
+
+function AnimatedLine({
+  text,
+  delay = 0,
+  accent = false,
+}: {
+  text:    string
+  delay?:  number
+  accent?: boolean
+}) {
   return (
-    <motion.h1
-      variants={container}
+    <motion.div
       initial="hidden"
       animate="visible"
-      className="font-serif font-bold leading-none tracking-[-0.03em] overflow-hidden"
-      style={{ fontSize: 'clamp(64px, 10vw, 120px)' }}
-      aria-label={name}
+      variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.03, delayChildren: delay } } }}
+      className="overflow-hidden"
+      style={{ textAlign: 'center' }}
+      aria-label={text}
     >
-      {name.split('').map((letter, i) => (
+      {text.split('').map((char, i) => (
         <motion.span
           key={i}
-          variants={char}
-          style={{ display: 'inline-block', color: 'var(--text)' }}
+          variants={charVariants}
+          style={{
+            display:       'inline-block',
+            color:         'var(--text)',
+            fontFamily:    'var(--font-display)',
+            fontWeight:    900,
+            lineHeight:    0.88,
+            fontSize:      'clamp(68px, 11vw, 148px)',
+            letterSpacing: '-0.02em',
+          }}
         >
-          {letter === ' ' ? '\u00A0' : letter}
+          {char === ' ' ? '\u00A0' : char}
         </motion.span>
       ))}
-    </motion.h1>
+      {accent && (
+        <motion.span
+          variants={charVariants}
+          style={{
+            display:    'inline-block',
+            color:      'var(--accent)',
+            fontFamily: 'var(--font-display)',
+            fontWeight: 900,
+            lineHeight: 0.88,
+            fontSize:   'clamp(68px, 11vw, 148px)',
+          }}
+        >
+          .
+        </motion.span>
+      )}
+    </motion.div>
+  )
+}
+
+export function HeroName({ firstName, lastName }: HeroNameProps) {
+  return (
+    <h1 style={{ display: 'block' }}>
+      <AnimatedLine text={firstName} delay={0.1} />
+      <AnimatedLine text={lastName}  delay={0.28} accent />
+    </h1>
   )
 }

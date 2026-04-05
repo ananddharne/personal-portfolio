@@ -6,8 +6,8 @@
   --surface:     #161512;
   --surface-2:   #1f1e1a;
   --text:        #f0ece3;
-  --text-muted:  #8a877f;
-  --text-subtle: #3c3b37;
+  --text-muted:  #d4cfc6;
+  --text-subtle: #8f8b84;
   --accent:      #c09040;
   --border:      #252320;
   --font-display: var(--font-fraunces), Georgia, serif;
@@ -20,8 +20,8 @@
   --surface:     #161512;
   --surface-2:   #1f1e1a;
   --text:        #f0ece3;
-  --text-muted:  #8a877f;
-  --text-subtle: #3c3b37;
+  --text-muted:  #d4cfc6;
+  --text-subtle: #8f8b84;
   --accent:      #c09040;
   --border:      #252320;
 }

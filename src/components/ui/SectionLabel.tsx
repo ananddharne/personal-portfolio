@@ -5,10 +5,7 @@ interface SectionLabelProps {
 
 export function SectionLabel({ num, children }: SectionLabelProps) {
   return (
-    <div
-      className="flex items-center gap-4"
-      style={{ marginBottom: '4rem' }}
-    >
+    <div className="flex items-center gap-4" style={{ marginBottom: '4rem' }}>
       <span
         style={{
           fontFamily:    'var(--font-mono)',

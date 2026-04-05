@@ -7,11 +7,7 @@ export function Experience() {
   return (
     <section
       id="experience"
-      style={{
-        borderTop:    '1px solid var(--border)',
-        paddingTop:   '80px',
-        paddingBottom:'100px',
-      }}
+      style={{ borderTop: '1px solid var(--border)', paddingTop: '80px', paddingBottom: '100px' }}
     >
       <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 32px' }}>
 

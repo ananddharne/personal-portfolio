@@ -12,7 +12,7 @@ export function ChatMessage({ role, content }: ChatMessageProps) {
         style={
           isUser
             ? { background: 'var(--text)', color: 'var(--bg)' }
-            : { background: 'var(--bg-secondary)', color: 'var(--text)', border: '1px solid var(--border)' }
+            : { background: 'var(--surface)', color: 'var(--text)', border: '1px solid var(--border)' }
         }
       >
         {content}

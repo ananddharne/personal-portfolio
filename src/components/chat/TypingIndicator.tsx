@@ -3,7 +3,7 @@ export function TypingIndicator() {
     <div className="flex justify-start">
       <div
         className="px-3 py-2.5 border flex gap-1 items-center"
-        style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border)' }}
+        style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}
       >
         {[0, 1, 2].map(i => (
           <span

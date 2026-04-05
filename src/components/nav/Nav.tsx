@@ -71,7 +71,7 @@ export function Nav() {
             <ThemeToggle />
             <a
               href="#contact"
-              className="hidden md:inline-block transition-colors hover:bg-[var(--accent)] hover:text-[var(--bg)] hover:border-[var(--accent)]"
+              className="hidden md:inline-block"
               style={{
                 fontFamily:    'var(--font-mono)',
                 fontSize:      '11px',
@@ -80,9 +80,18 @@ export function Nav() {
                 textDecoration:'none',
                 padding:       '7px 14px',
                 border:        '1px solid var(--accent)',
+                transition:    'background 0.15s, color 0.15s',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = 'var(--accent)'
+                e.currentTarget.style.color = 'var(--bg)'
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = 'transparent'
+                e.currentTarget.style.color = 'var(--accent)'
               }}
             >
-              Hire me
+              Contact me
             </a>
             <button
               onClick={() => setMenuOpen(o => !o)}

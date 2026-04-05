@@ -2,97 +2,152 @@ import type { ExperienceItem, Project, SkillGroup } from './types'
 
 export const bio = {
   name: 'Anand Dharne',
-  tagline: 'Software engineer building thoughtful products. Obsessed with craft, performance, and the space between design and engineering.',
+  tagline: 'Software engineer passionate about reliability and observability, occasional firefighter with a genuine love for user interfaces. I care deeply about the systems behind the experience, and the customers depending on them.',
   about: [
-    "I've spent the last few years at the intersection of product and engineering — building loyalty and engagement platforms at SessionM (acquired by Capillary Technologies) that serve millions of users.",
-    "I care about the details: the 60fps animation, the API that never times out, the component that actually makes sense to the next engineer. I'm looking for a team that takes craft seriously.",
+    "I've spent 7+ years at the intersection of engineering, product and leadership - building and operating reliable, performant, and user-friendly software. I care deeply about the customer experience, and I'm passionate about mentorship and helping the people around me grow.",
   ],
-  email: 'your@email.com',
-  linkedin: 'https://linkedin.com/in/yourhandle',
-  github: 'https://github.com/yourhandle',
+  email: 'dharneanand92@email.com',
+  linkedin: 'https://www.linkedin.com/in/ananddharne/',
+  github: 'https://github.com/ananddharne',
   resumeUrl: '/resume.pdf',
 }
 
 export const experience: ExperienceItem[] = [
   {
-    id: 'sessionm',
-    role: 'Software Engineer',
-    company: 'SessionM · Capillary Technologies',
-    period: '2021 – 2024',
+    id: 'mastercard',
+    role: 'Lead Software Engineer',
+    company: 'Mastercard',
+    period: 'Feb 2023 – Present',
     type: 'Full-time',
-    description: 'Built and maintained loyalty and engagement platform features serving enterprise retail clients. Led performance optimization initiatives and contributed across the full stack.',
+    description: 'Built and maintained loyalty and engagement platform features serving enterprise retail clients like Mcdonalds, Starbucks and American Airlines. Led performance optimization initiatives and contributed across the full stack.',
     accomplishments: [
-      'TODO: Add your key accomplishments here',
-      'TODO: Quantify impact where possible (e.g., reduced load time by X%)',
-      'TODO: Mention technologies used for each accomplishment',
-    ],
+      'Own the observability platform (Splunk Observability Cloud, OpenTelemetry) across a loyalty and engagement system serving 40+ enterprise clients and millions of users',
+      'Lead a distributed SRE team across 3 global regions — reducing MTTR by 45% through standardized on-call processes and post-incident reviews.',
+      'Built a multi-agent AI pipeline on AWS Bedrock that automated parts of post-incident analysis, cutting report generation from hours to minutes',
+      'Designed and maintain an executive-level operations dashboard that translates observability data into leadership insights',
+      'Drive SRE best practices including SLO/SLI design, error budgets, and toil reduction across the platform'
+    ]
   },
   {
-    id: 'prev-role',
-    role: 'Software Engineer',
-    company: 'TODO: Previous Company',
-    period: 'TODO: Year – Year',
+    id: 'perch',
+    role: 'Software Engineer - Front End',
+    company: 'Perch',
+    period: 'Oct 2021 - Dec 2022',
     type: 'Full-time',
-    description: 'TODO: Add your previous role description.',
-    accomplishments: [],
+    description: 'Built high-performance supply chain analytics UIs integrating Amazon Selling Partner APIs to surface brand-level inventory and revenue insights.',
+    accomplishments: [
+      'Delivered tooling that drove a 15% increase in quarterly revenue for 5+ acquired brands by optimizing inventory turnover.',
+      'Partnered with design and QA throughout the full SDLC to ship accessible, production-quality interfaces on aggressive timelines.',
+    ]
   },
+    {
+    id: 'sessionm',
+    role: 'Sr. Software Engineer in Test',
+    company: 'SessionM',
+    period: 'Oct 2019 – Oct 2021',
+    type: 'Full-time',
+    description: 'Led QA automation across a complex, AWS-native loyalty platform — building end-to-end test suites with Cypress, performance tests with k6, and API automation with Postman/Newman.',
+    accomplishments: [
+      'Fostered a culture of TDD across the engineering team, leading to a reduction in production bugs',
+      'Designed and implemented a comprehensive end-to-end testing framework using Cypress, achieving 90% test coverage across critical user flows and reducing manual testing efforts.',
+      'Built a Python-based data generation framework that automated the creation of realistic test data, improving test reliability and enabling more effective performance testing.',
+      'Collaborated with cross-functional teams to integrate automated testing into CI/CD pipelines, resulting in faster feedback loops and a 5% decrease in time-to-deploy.',
+    ]
+  },
+    {
+    id: 'happie',
+    role: 'Software Engineer - Front End and QA',
+    company: 'SessionM',
+    period: 'Oct 2017 – Oct 2019',
+    type: 'Full-time',
+    description: 'Built and maintained features for a Vue.js web application, owned Webpack configuration, and set up unit and E2E testing pipelines. Deployed via Circle CI',
+    accomplishments: [
+      'Automated integration tests caught a critical bug in a major release, preventing a potential revenue loss of for the customer.',
+    ]
+  }
 ]
 
 export const projects: Project[] = [
   {
-    id: 'loyalty-dashboard',
+    id: 'ai-agentic-pipeline',
     num: '01',
-    title: 'Loyalty Platform Dashboard',
-    description: 'Real-time analytics dashboard for enterprise loyalty programs. Handles high-volume events with sub-second query response. Built for extensibility and white-labeling.',
-    tags: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
-    featured: true,
+    title: 'Multi-Agent AI Incident Pipeline',
+    description: 'Real-time post-incident analysis system powered by a multi-agent AI pipeline. Automated 80% of post-incident reporting tasks - cutting turnaround from hours to minutes and freeing engineers to focus on resolution, not documentation.',
+    tags: ['AWS Bedrock', 'Strands agents', 'Vector DB', 'RAG', 'Claude AI'],
+    featured: false,
     liveUrl: undefined,
     githubUrl: undefined,
   },
   {
-    id: 'design-system',
+    id: 'observability',
     num: '02',
-    title: 'Component Design System',
-    description: 'Internal component library with full TypeScript support, Storybook documentation, and automated visual regression testing.',
-    tags: ['React', 'TypeScript', 'Storybook'],
+    title: 'Observability Platform (Splunk)',
+    description: 'End-to-end observability platform built on Splunk Observability Cloud and OpenTelemetry. Implemented detectors, defined monitoring standards, SLO/SLI frameworks, and alerting strategy across a loyalty platform serving millions of users.',
+    tags: ['Splunk', 'OpenTelemetry', 'SignalFx', 'SLO/SLI Design', 'Monitoring Distributed systems'],
     featured: false,
     githubUrl: undefined,
   },
   {
-    id: 'cli-tooling',
+    id: 'perch-experience',
     num: '03',
-    title: 'Developer CLI Tool',
-    description: 'Internal developer tool automating scaffold generation and config validation across a monorepo. Cut onboarding time for new services significantly.',
-    tags: ['Node.js', 'TypeScript'],
+    title: 'Supply Chain Analytics UI',
+    description: 'Customer-facing analytics platform for supply chain operations, integrating Amazon Selling Partner APIs to surface brand-level growth and inventory insights. Drove measurable revenue impact for acquired brands through better data visibility.',
+    tags: ['Node.js', 'TypeScript', 'Vue', 'Amazon SP API', 'Data Visualization'],
     featured: false,
     githubUrl: undefined,
   },
   {
-    id: 'project-4',
+    id: 'qa',
     num: '04',
-    title: 'TODO: Project Title',
-    description: 'TODO: Add your fourth project here.',
-    tags: ['TODO'],
+    title: 'Automation Framework',
+    description: 'Comprehensive test automation suite for a large-scale loyalty platform — covering API contracts, end-to-end user flows, and load/performance scenarios. Cut regression cycle time significantly and improved release confidence across the engineering org.',
+    tags: ['Cypress', 'Postman/Newman', 'CI/CD', 'E2E Testing', 'Performance Testing'],
     featured: false,
+  },
+  {
+    id: 'chrome-history-mcp',
+    num: '05',
+    title: 'Chrome History MCP Server',
+    description: 'An MCP (Model Context Protocol) server that exposes your Chrome browsing history to AI assistants like Claude. Lets you query and reason over your browsing history conversationally.',
+    tags: ['JavaScript', 'MCP', 'Claude', 'AI Tooling'],
+    featured: false,
+    githubUrl: 'https://github.com/ananddharne/chrome-history-mcp-server',
+  },
+  {
+    id: 'oura-ring-app',
+    num: '06',
+    title: 'Oura Ring Data Platform',
+    description: 'Personal health data platform that auto-syncs Oura Ring metrics and surfaces them through Grafana dashboards. Built with TypeScript, PostgreSQL, and Docker — full observability stack for personal biometrics.',
+    tags: ['TypeScript', 'PostgreSQL', 'Grafana', 'Docker', 'Oura API'],
+    featured: false,
+    githubUrl: 'https://github.com/ananddharne/oura-ring-app',
   },
 ]
 
 export const skillGroups: SkillGroup[] = [
   {
     category: 'Frontend',
-    skills: ['React', 'TypeScript', 'JavaScript', 'Next.js', 'CSS / Tailwind', 'Framer Motion', 'Performance'],
+    skills: ['React', 'TypeScript', 'JavaScript', 'Vue.js', 'Next.js', 'CSS / Tailwind'],
   },
   {
-    category: 'Backend',
-    skills: ['Node.js', 'REST APIs', 'PostgreSQL', 'Redis', 'GraphQL'],
+    category: 'Observability & SRE',
+    skills: ['Splunk Observability Cloud', 'OpenTelemetry', 'SLO/SLI Design', 'SignalFx', 'Incident Management'],
   },
   {
-    category: 'Tools & Infrastructure',
-    skills: ['Git', 'Docker', 'Vercel', 'CI/CD', 'Webpack / Vite'],
+    category: 'Cloud & Infrastructure',
+    skills: ['AWS Lambda', 'ECS', 'S3', 'RDS Aurora', 'Step Functions', 'CloudWatch', 'Athena', 'SNS/SQS', 'Docker', 'CI/CD'],
   },
   {
-    category: 'Concepts & Practices',
-    skills: ['System Design', 'Code Review', 'Agile', 'Mentoring', 'Accessibility'],
+    category: 'AI & Automation',
+    skills: ['AWS Bedrock', 'Multi-agent Pipelines', 'Python', 'Claude AI'],
+  },
+  {
+    category: 'Testing & QA',
+    skills: ['Cypress', 'Playwright', 'k6', 'Postman/Newman', 'Jest', 'Selenium'],
+  },
+  {
+    category: 'Practices & Leadership',
+    skills: ['System Design', 'Incident Command', 'Cross-functional Leadership', 'Code Review', 'Agile'],
   },
 ]
 

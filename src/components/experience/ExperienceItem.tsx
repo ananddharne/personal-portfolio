@@ -62,7 +62,7 @@ export function ExperienceItem({ item }: { item: TExperienceItem }) {
           <p
             style={{
               fontFamily: 'var(--font-sans)',
-              fontSize:   '14px',
+              fontSize:   '18px',
               lineHeight: 1.75,
               color:      'var(--text-muted)',
               maxWidth:   '64ch',
@@ -110,7 +110,7 @@ export function ExperienceItem({ item }: { item: TExperienceItem }) {
                         key={i}
                         style={{
                           fontFamily: 'var(--font-sans)',
-                          fontSize:   '13px',
+                          fontSize:   '16px',
                           lineHeight: 1.65,
                           color:      'var(--text-muted)',
                           paddingLeft:'16px',

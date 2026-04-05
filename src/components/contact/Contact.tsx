@@ -5,11 +5,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      style={{
-        borderTop:    '1px solid var(--border)',
-        paddingTop:   '100px',
-        paddingBottom:'120px',
-      }}
+      style={{ borderTop: '1px solid var(--border)', paddingTop: '100px', paddingBottom: '120px' }}
     >
       <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 32px' }}>
         <ScrollReveal>
@@ -45,15 +41,15 @@ export function Contact() {
             <p
               style={{
                 fontFamily:   'var(--font-sans)',
-                fontSize:     '15px',
+                fontSize:     '19px',
                 lineHeight:   1.75,
                 color:        'var(--text-muted)',
                 marginBottom: '3rem',
                 maxWidth:     '46ch',
               }}
             >
-              I&apos;m actively looking for my next role. If you&apos;re building something
-              interesting, I&apos;d love to hear about it.
+              If you&apos;re building something
+              interesting, I&apos;d love to hear about it or just reach out to say hi :).
             </p>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
@@ -78,7 +74,7 @@ export function Contact() {
                 {[
                   { label: 'LinkedIn', href: bio.linkedin  },
                   { label: 'GitHub',   href: bio.github    },
-                  { label: 'Resume',   href: bio.resumeUrl },
+                  // { label: 'Resume',   href: bio.resumeUrl },
                 ].map(({ label, href }) => (
                   <a
                     key={label}

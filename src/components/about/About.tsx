@@ -7,11 +7,7 @@ export function About() {
   return (
     <section
       id="about"
-      style={{
-        borderTop:    '1px solid var(--border)',
-        paddingTop:   '80px',
-        paddingBottom:'100px',
-      }}
+      style={{ borderTop: '1px solid var(--border)', paddingTop: '80px', paddingBottom: '100px' }}
     >
       <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 32px' }}>
 
@@ -19,7 +15,7 @@ export function About() {
           <SectionLabel num="01">About</SectionLabel>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_320px] gap-12 md:gap-20 items-start">
+        <div className="group grid grid-cols-1 md:grid-cols-[1fr_320px] gap-12 md:gap-20 items-start">
 
           {/* Text */}
           <ScrollReveal delay={0.05}>
@@ -35,7 +31,8 @@ export function About() {
                 marginBottom:  '2rem',
               }}
             >
-              Engineer by training,<br />builder by instinct.
+              Engineering, leadership, and everything in between.
+
             </h2>
 
             {bio.about.map((para, i) => (
@@ -43,7 +40,7 @@ export function About() {
                 key={i}
                 style={{
                   fontFamily:   'var(--font-sans)',
-                  fontSize:     '15px',
+                  fontSize:     '19px',
                   lineHeight:   1.8,
                   color:        'var(--text-muted)',
                   marginBottom: i < bio.about.length - 1 ? '1.25rem' : 0,
@@ -58,16 +55,13 @@ export function About() {
           <ScrollReveal delay={0.15}>
             <div
               className="relative w-full overflow-hidden"
-              style={{
-                aspectRatio: '3/4',
-                border:      '1px solid var(--border)',
-              }}
+              style={{ aspectRatio: '3/4', border: '1px solid var(--border)' }}
             >
               <Image
-                src="https://picsum.photos/seed/portrait42/600/800"
+                src="/about.jpeg"
                 alt="Anand Dharne"
                 fill
-                className="object-cover grayscale"
+                className="object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-[1.02]"
                 sizes="(max-width: 768px) 100vw, 320px"
               />
             </div>
